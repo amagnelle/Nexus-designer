@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Press+Start+2P&display=swap');
+
+:root{
+    --primarycolor :#6144ac;
+    --secondarycolor: #333;
+    --textcolor: #1d1d1d;
+    --links: #FAAE64;
+    --branco:#f2f5f7;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+
+body{
+    background-color: var(--branco);
+}
+
+header{
+    background-color: var(--secondarycolor);
+    align-items:center;
+    justify-content: space-between;
+    max-height: 120px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-bottom:7px solid #6144ac ;
+}
+
+#logo img{
+    width: 130px;
+    margin-left: 50%;
+    margin-top: 10%;
+
+}
+#logo img:hover{
+    transform: scale(1.1);
+    transition: all 0.1s ease-in-out;
+    cursor: pointer;
+}
+.navbar{
+    padding: 80px;
+    
+}
+
+
+.navbar ul{
+    /* margin-right: %; */
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 50px;
+
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    color: #b9afd4;
+    font-weight: 700;
+    
+
+}
