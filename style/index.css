@@ -1,18 +1,23 @@
+/* Importa quatro fontes do Google Fonts (Inter, Montserrat, Oswald e Press Start 2P) */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Press+Start+2P&display=swap');
 
-:root{
-    --primarycolor :#6144ac;
-    --secondarycolor: #333;
-    --textcolor: #1d1d1d;
-    --links: #FAAE64;
-    --branco:#f2f5f7;
+/* Define variáveis globais de cor */
+:root {
+    --primarycolor: #6144ac;      /* Roxo principal */
+    --secondarycolor: #333;       /* Cinza escuro */
+    --textcolor: #1d1d1d;         /* Cor de texto padrão */
+    --links: #FAAE64;             /* Cor dos links (amarelado) */
+    --branco: #f2f5f7;            /* Branco suave */
+    --teste:#564673;           /* Roxo suave */
+    --teste2: #F576F4
 }
 
-html{
+/* Suaviza o scroll da página */
+html {
     scroll-behavior: smooth;
 }
 
-
+/* Remove margens/paddings padrão e aplica a fonte base */
 * {
     margin: 0;
     padding: 0;
@@ -20,67 +25,142 @@ html{
     font-family: 'Inter', sans-serif;
 }
 
-
-body{
-    background-color: #87856f
+/* Define o estilo geral do corpo da página */
+body {
+  background: linear-gradient(135deg, #0a0a0a, #1a0f2e); /* Degradê escuro */
+  color: #fff;                                            /* Texto branco */
+  font-family: 'Poppins', sans-serif;                     /* Fonte alternativa */
 }
 
-header{
-    background-color: var(--secondarycolor);
-    align-items:center;
-    justify-content: space-between;
+/* Adiciona um padrão translúcido de fundo (efeito sutil) */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('hexagon-pattern.png'); /* Imagem de fundo (hexágonos) */
+  opacity: 0.05;                                /* Quase invisível */
+  z-index: -1;                                  /* Fica atrás do conteúdo */
+}
+
+/* Cabeçalho principal */
+header {
+    background-color: var(--secondarycolor); /* Fundo escuro */
+    align-items: center;                     /* Centraliza verticalmente */
+    justify-content: space-between;          /* Espaço entre logo e nav */
     max-height: 120px;
     display: flex;
     flex-direction: row;
     width: 100%;
-    border-bottom:7px solid #6144ac ;
+    border-bottom: 7px solid #6144ac;        /* Borda inferior roxa */
 }
 
-#logo img{
+/* Logo no cabeçalho */
+#logo img {
     width: 130px;
     margin-left: 50%;
     margin-top: 10%;
-
 }
-#logo img:hover{
-    transform: scale(1.1);
+
+/* Efeito de hover no logo */
+#logo img:hover {
+    transform: scale(1.1);                   /* Aumenta levemente */
     transition: all 0.1s ease-in-out;
     cursor: pointer;
 }
-.navbar{
+
+/* Container da barra de navegação */
+.navbar {
     padding: 80px;
-    
 }
 
-
-.navbar ul{
-    /* margin-right: %; */
+/* Lista de links do menu */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
     display: flex;
-    flex-direction: row;
-    list-style: none;
-    gap: 50px;
-
 }
 
-.navbar ul li a{
-    text-decoration: none;
-    color: #b9afd4;
-    font-weight: 700;
+nav ul li {
+    --c: var(--links);
+    color: var(--branco);
+    font-size: 16px;
+    border: 0.3em solid var(--c);
+    border-radius: 0.5em;
+    width: 12em;
+    height: 3em;
+    font-size: 16px;
+    border: 0.3em solid  var(--teste2);
+    border-radius: 50em;
+    width: 12em;
+    height: 3em;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: sans-serif;
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 3em;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: 0.5s;
+    margin: 1em;
     
-
+   
 }
 
-.container
-{
+nav ul li span {
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    background: linear-gradient(2deg, #ff00bb, #440174);
+    top: 0;
+    transform: translateY(150%);
+    border-radius: 50%;
+    left: calc((var(--n) - 1) * 25%);
+    transition: 0.5s;
+    transition-delay: calc((var(--n) - 1) * 0.1s);
+    z-index: -1;
+}
+
+nav ul li:hover {
+    color: rgb(58, 2, 2);
+}
+
+nav ul li:hover span {
+    transform: translateY(0) scale(2);
+}
+
+nav ul li span:nth-child(1) {
+    --n: 1;
+}
+
+nav ul li span:nth-child(2) {
+    --n: 2;
+}
+
+nav ul li span:nth-child(3) {
+    --n: 3;
+}
+
+nav ul li span:nth-child(4) {
+    --n: 4;
+}
+
+
+/* Container principal dos cards */
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   padding: 40px 0;
+  margin-right: 50%;
+  margin-top: 2%;
 }
 
-.container .box
-{
+/* Cada card/box individual */
+.container .box {
   position: relative;
   width: 320px;
   height: 400px;
@@ -91,24 +171,23 @@ header{
   transition: 0.5s;
 }
 
-.container .box::before
-{
-  content:' ';
+/* Efeitos de fundo inclinados nos cards */
+.container .box::before {
+  content: ' ';
   position: absolute;
   top: 0;
   left: 50px;
   width: 50%;
   height: 100%;
-  text-decoration: none;
   background: #fff;
   border-radius: 8px;
-  transform: skewX(15deg);
+  transform: skewX(15deg); /* Inclinação */
   transition: 0.5s;
 }
 
-.container .box::after
-{
-  content:'';
+/* Efeito de brilho difuso atrás dos cards */
+.container .box::after {
+  content: '';
   position: absolute;
   top: 0;
   left: 50;
@@ -118,51 +197,45 @@ header{
   border-radius: 8px;
   transform: skewX(15deg);
   transition: 0.5s;
-  filter: blur(30px);
+  filter: blur(30px); /* Suaviza o brilho */
 }
 
+/* Ao passar o mouse, endireita o card */
 .container .box:hover:before,
-.container .box:hover:after
-{
+.container .box:hover:after {
   transform: skewX(0deg);
   left: 20px;
   width: calc(100% - 90px);
-  
 }
 
+/* Define cores diferentes para cada card */
 .container .box:nth-child(1):before,
-.container .box:nth-child(1):after
-{
-  background: linear-gradient(315deg, #097704, #5100ff)
+.container .box:nth-child(1):after {
+  background: linear-gradient(315deg, #097704, #5100ff);
 }
 
 .container .box:nth-child(2):before,
-.container .box:nth-child(2):after
-{
-  background: linear-gradient(315deg, #7c3406, #ec0101)
+.container .box:nth-child(2):after {
+  background: linear-gradient(315deg, #7c3406, #ec0101);
 }
 
 .container .box:nth-child(3):before,
-.container .box:nth-child(3):after
-{
-  background: linear-gradient(315deg, #ff00bb, #6818a1)
+.container .box:nth-child(3):after {
+  background: linear-gradient(315deg, #ff00bb, #6818a1);
 }
 
-.container .box span
-{
+/* Span invisível usado pra animações */
+.container .box span {
   display: block;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 5;
   pointer-events: none;
 }
 
-.container .box span::before
-{
-  content:'';
+/* Brilho no topo do card */
+.container .box span::before {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -172,13 +245,13 @@ header{
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   opacity: 0;
-  transition: 0.1s;  
+  transition: 0.1s;
   animation: animate 2s ease-in-out infinite;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.08)
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
-.container .box:hover span::before
-{
+/* Quando passa o mouse, o brilho aparece */
+.container .box:hover span::before {
   top: -50px;
   left: 50px;
   width: 100px;
@@ -186,9 +259,9 @@ header{
   opacity: 1;
 }
 
-.container .box span::after
-{
-  content:'';
+/* Brilho no canto inferior */
+.container .box span::after {
+  content: '';
   position: absolute;
   bottom: 0;
   right: 0;
@@ -204,8 +277,8 @@ header{
   animation-delay: -1s;
 }
 
-.container .box:hover span:after
-{
+/* Mostra o brilho no hover */
+.container .box:hover span:after {
   bottom: -50px;
   right: 50px;
   width: 100px;
@@ -213,21 +286,18 @@ header{
   opacity: 1;
 }
 
-@keyframes animate
-{
-  0%, 100%
-  {
+/* Animação de leve flutuação */
+@keyframes animate {
+  0%, 100% {
     transform: translateY(10px);
   }
-  
-  50%
-  {
+  50% {
     transform: translate(-10px);
   }
 }
 
-.container .box .content
-{
+/* Conteúdo interno dos cards */
+.container .box .content {
   position: relative;
   left: 0;
   padding: 20px 40px;
@@ -236,32 +306,31 @@ header{
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   z-index: 1;
-  transform: 0.5s;
   color: #fff;
 }
 
-.container .box:hover .content
-{
+/* Move o conteúdo levemente no hover */
+.container .box:hover .content {
   left: -25px;
   padding: 60px 40px;
 }
 
-.container .box .content h2
-{
+/* Título do card */
+.container .box .content h2 {
   font-size: 2em;
   color: #fff;
   margin-bottom: 10px;
 }
 
-.container .box .content p
-{
+/* Texto do card */
+.container .box .content p {
   font-size: 1.1em;
   margin-bottom: 10px;
   line-height: 1.4em;
 }
 
-.container .box .content a
-{
+/* Botão/link dentro do card */
+.container .box .content a {
   display: inline-block;
   font-size: 1.1em;
   color: #111;
@@ -273,8 +342,8 @@ header{
   margin-top: 5px;
 }
 
-.container .box .content a:hover
-{
+/* Efeito de hover no botão */
+.container .box .content a:hover {
   background: #ffcf4d;
   border: 1px solid rgba(255, 0, 88, 0.4);
   box-shadow: 0 1px 15px rgba(1, 1, 1, 0.2);
