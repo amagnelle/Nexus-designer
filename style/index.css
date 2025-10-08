@@ -9,7 +9,7 @@
     --links: #FAAE64;             /* Cor dos links (amarelado) */
     --branco: #f2f5f7;            /* Branco suave */
     --teste:#564673;           /* Roxo suave */
-    --teste2: #F576F4
+    --teste2: #7139DB;
 }
 
 /* Suaviza o scroll da página */
@@ -57,7 +57,7 @@ header {
 /* Logo no cabeçalho */
 #logo img {
     width: 130px;
-    margin-left: 50%;
+    margin-left: 200%;
     margin-top: 10%;
 }
 
@@ -80,7 +80,12 @@ nav ul {
     padding: 0;
     display: flex;
 }
-
+.nexus2 img {
+    width: 90%;
+    align-items: center;
+    margin-top: -2000x
+    display: flex;
+}
 nav ul li {
     --c: var(--links);
     color: var(--branco);
@@ -124,7 +129,7 @@ nav ul li span {
 }
 
 nav ul li:hover {
-    color: rgb(58, 2, 2);
+    color: rgb(255, 255, 255);
 }
 
 nav ul li:hover span {
