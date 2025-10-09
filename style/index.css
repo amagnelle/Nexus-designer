@@ -9,7 +9,7 @@
     --links: #FAAE64;             /* Cor dos links (amarelado) */
     --branco: #f2f5f7;            /* Branco suave */
     --teste:#564673;           /* Roxo suave */
-    --teste2: #7139DB;
+    --teste2: #F576F4
 }
 
 /* Suaviza o scroll da página */
@@ -57,7 +57,7 @@ header {
 /* Logo no cabeçalho */
 #logo img {
     width: 130px;
-    margin-left: 200%;
+    margin-left: 50%;
     margin-top: 10%;
 }
 
@@ -80,12 +80,7 @@ nav ul {
     padding: 0;
     display: flex;
 }
-.nexus2 img {
-    width: 90%;
-    align-items: center;
-    margin-top: -2000x
-    display: flex;
-}
+
 nav ul li {
     --c: var(--links);
     color: var(--branco);
@@ -129,7 +124,7 @@ nav ul li span {
 }
 
 nav ul li:hover {
-    color: rgb(255, 255, 255);
+    color: rgb(58, 2, 2);
 }
 
 nav ul li:hover span {
@@ -153,93 +148,106 @@ nav ul li span:nth-child(4) {
 }
 
 
-/* Container principal dos cards */
+/* ===================== CONTAINER DOS CARDS ===================== */
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 40px 0;
-  margin-right: 50%;
-  margin-top: 2%;
+  display: flex;                  /* Organiza os cards lado a lado */
+  justify-content: center;        /* Centraliza os cards na horizontal */
+  align-items: center;            /* Centraliza os cards na vertical */
+  flex-wrap: wrap;                /* Faz os cards quebrarem linha se faltar espaço */
+  padding: 40px 0;                /* Espaçamento interno superior e inferior */
+  margin-top: 15%;              /* Margem acima do bloco de cards */
+  margin-left: -20%;   
+        /* Margem à direita para ajustar o posicionamento */
 }
 
-/* Cada card/box individual */
-.container .box {
-  position: relative;
-  width: 320px;
-  height: 400px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 40px 30px;
-  transition: 0.5s;
+/* ===================== BASE DE TODOS OS CARDS ===================== */
+.container .box1,
+.container .box2,
+.container .box3 {
+  position: relative;             /* Necessário para posicionar elementos ::before e ::after */
+  width: 320px;                   /* Largura do card */
+  height: 400px;                  /* Altura do card */
+  display: flex;                  /* Alinha conteúdo interno */
+  justify-content: center;        /* Centraliza horizontalmente */
+  align-items: center;            /* Centraliza verticalmente */
+  margin: 40px 30px;              /* Espaço entre os cards */
+  transition: 0.5s;               /* Suaviza efeitos de hover */
 }
 
-/* Efeitos de fundo inclinados nos cards */
-.container .box::before {
-  content: ' ';
+/* ===================== FUNDO DE CADA CARD (EFEITO INCLINADO) ===================== */
+.container .box1::before,
+.container .box2::before,
+.container .box3::before {
+  content: '';                    /* Cria um elemento visual */
+  position: absolute;             
+  top: 0;
+  left: 50px;
+  width: 50%;
+  height: 100%;
+  border-radius: 8px;             /* Cantos arredondados */
+  transform: skewX(15deg);        /* Inclina o fundo */
+  transition: 0.5s;               /* Anima suavemente quando o hover acontece */
+}
+
+/* ===================== BRILHO SUAVE DO FUNDO ===================== */
+.container .box1::after,
+.container .box2::after,
+.container .box3::after {
+  content: '';
   position: absolute;
   top: 0;
   left: 50px;
   width: 50%;
   height: 100%;
-  background: #fff;
-  border-radius: 8px;
-  transform: skewX(15deg); /* Inclinação */
-  transition: 0.5s;
-}
-
-/* Efeito de brilho difuso atrás dos cards */
-.container .box::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50;
-  width: 50%;
-  height: 100%;
-  background: #fff;
   border-radius: 8px;
   transform: skewX(15deg);
+  filter: blur(30px);             /* Deixa o fundo “borrado”, criando efeito de brilho */
   transition: 0.5s;
-  filter: blur(30px); /* Suaviza o brilho */
 }
 
-/* Ao passar o mouse, endireita o card */
-.container .box:hover:before,
-.container .box:hover:after {
-  transform: skewX(0deg);
-  left: 20px;
-  width: calc(100% - 90px);
+/* ===================== CORES DIFERENTES PARA CADA CARD ===================== */
+.container .box1::before,
+.container .box1::after {
+  background: linear-gradient(315deg, #097704, #5100ff); /* Verde e azul */
 }
 
-/* Define cores diferentes para cada card */
-.container .box:nth-child(1):before,
-.container .box:nth-child(1):after {
-  background: linear-gradient(315deg, #097704, #5100ff);
+.container .box2::before,
+.container .box2::after {
+  background: linear-gradient(315deg, #7c3406, #ec0101); /* Laranja e vermelho */
 }
 
-.container .box:nth-child(2):before,
-.container .box:nth-child(2):after {
-  background: linear-gradient(315deg, #7c3406, #ec0101);
+.container .box3::before,
+.container .box3::after {
+  background: linear-gradient(315deg, #ff00bb, #6818a1); /* Rosa e roxo */
 }
 
-.container .box:nth-child(3):before,
-.container .box:nth-child(3):after {
-  background: linear-gradient(315deg, #ff00bb, #6818a1);
+/* ===================== EFEITO DE HOVER NOS FUNDOS ===================== */
+.container .box1:hover::before,
+.container .box2:hover::before,
+.container .box3:hover::before,
+.container .box1:hover::after,
+.container .box2:hover::after,
+.container .box3:hover::after {
+  transform: skewX(0deg);         /* Remove a inclinação */
+  left: 20px;                     /* Move um pouco para a esquerda */
+  width: calc(100% - 90px);       /* Ajusta o tamanho pra parecer que o card se “expande” */
 }
 
-/* Span invisível usado pra animações */
-.container .box span {
+/* ===================== SPAN DECORATIVO (EFEITO DE LUZ) ===================== */
+.container .box1 span,
+.container .box2 span,
+.container .box3 span {
   display: block;
   position: absolute;
-  inset: 0;
-  z-index: 5;
-  pointer-events: none;
+  inset: 0;                       /* Preenche todo o card */
+  z-index: 5;                     /* Fica acima do fundo */
+  pointer-events: none;           /* Não interfere com cliques */
 }
 
-/* Brilho no topo do card */
-.container .box span::before {
+/* ===================== BRILHO SUPERIOR (FLUTUANTE) ===================== */
+.container .box1 span::before,
+.container .box2 span::before,
+.container .box3 span::before {
   content: '';
   position: absolute;
   top: 0;
@@ -247,25 +255,29 @@ nav ul li span:nth-child(4) {
   width: 0;
   height: 0;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  opacity: 0;
+  background: rgba(255, 255, 255, 0.1);  /* Branco transparente */
+  backdrop-filter: blur(10px);           /* Deixa o brilho mais difuso */
+  opacity: 0;                            /* Invisível inicialmente */
   transition: 0.1s;
-  animation: animate 2s ease-in-out infinite;
+  animation: animate 2s ease-in-out infinite; /* Faz a “luz” flutuar */
   box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
-/* Quando passa o mouse, o brilho aparece */
-.container .box:hover span::before {
+/* ===================== QUANDO PASSA O MOUSE: BRILHO APARECE ===================== */
+.container .box1:hover span::before,
+.container .box2:hover span::before,
+.container .box3:hover span::before {
   top: -50px;
   left: 50px;
   width: 100px;
   height: 100px;
-  opacity: 1;
+  opacity: 1;                     /* Torna o brilho visível */
 }
 
-/* Brilho no canto inferior */
-.container .box span::after {
+/* ===================== BRILHO INFERIOR (SEGUNDO EFEITO) ===================== */
+.container .box1 span::after,
+.container .box2 span::after,
+.container .box3 span::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -277,13 +289,15 @@ nav ul li span:nth-child(4) {
   backdrop-filter: blur(10px);
   opacity: 0;
   transition: 0.5s;
-  animation: animate 2s ease-in-out infinite;
+  animation: animate 2s ease-in-out infinite; /* Também flutua */
   box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-  animation-delay: -1s;
+  animation-delay: -1s;             /* Faz a segunda luz piscar fora de sincronia */
 }
 
-/* Mostra o brilho no hover */
-.container .box:hover span:after {
+/* ===================== MOSTRA O BRILHO INFERIOR NO HOVER ===================== */
+.container .box1:hover span::after,
+.container .box2:hover span::after,
+.container .box3:hover span::after {
   bottom: -50px;
   right: 50px;
   width: 100px;
@@ -291,65 +305,75 @@ nav ul li span:nth-child(4) {
   opacity: 1;
 }
 
-/* Animação de leve flutuação */
+/* ===================== ANIMAÇÃO DAS LUZES (FLUTUAÇÃO SUAVE) ===================== */
 @keyframes animate {
   0%, 100% {
-    transform: translateY(10px);
+    transform: translateY(10px);   /* Move levemente pra baixo */
   }
   50% {
-    transform: translate(-10px);
+    transform: translate(-10px);   /* Move levemente pro lado — parece flutuar */
   }
 }
 
-/* Conteúdo interno dos cards */
-.container .box .content {
+/* ===================== CONTEÚDO INTERNO DOS CARDS ===================== */
+.container .box1 .content,
+.container .box2 .content,
+.container .box3 .content {
   position: relative;
   left: 0;
-  padding: 20px 40px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  z-index: 1;
+  padding: 20px 40px;              /* Espaçamento interno do conteúdo */
+  background: rgba(255, 255, 255, 0.05); /* Fundo translúcido */
+  backdrop-filter: blur(10px);     /* Deixa o fundo embaçado */
+  border-radius: 8px;              /* Bordas arredondadas */
   color: #fff;
+  z-index: 1;                      /* Fica acima das luzes */
+  transition: 0.5s;                /* Transição suave */
 }
 
-/* Move o conteúdo levemente no hover */
-.container .box:hover .content {
-  left: -25px;
-  padding: 60px 40px;
+/* ===================== MOVE O CONTEÚDO QUANDO PASSA O MOUSE ===================== */
+.container .box1:hover .content,
+.container .box2:hover .content,
+.container .box3:hover .content {
+  left: -25px;                     /* Move um pouco o card pro lado */
+  padding: 60px 40px;              /* Aumenta o espaçamento interno */
 }
 
-/* Título do card */
-.container .box .content h2 {
+/* ===================== TÍTULO DO CARD ===================== */
+.container .content h2 {
   font-size: 2em;
-  color: #fff;
   margin-bottom: 10px;
 }
 
-/* Texto do card */
-.container .box .content p {
+/* ===================== TEXTO DO CARD ===================== */
+.container .content p {
   font-size: 1.1em;
-  margin-bottom: 10px;
-  line-height: 1.4em;
+  line-height: 1.4em;              /* Espaçamento entre linhas */
+}
+.nexus2{
+   display: block;
+    width: 20%;
+    height: 20%;
+    margin: 38%;
+
+    margin-top: -72%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+  /* border: 2px solid #6818a1;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #ff00bb; brilho em volta
+} */
+
+/* .nexus2{
+  border: 2px solid transparent;
+  border-radius: 10px;
+  transition: 0.3s ease;
 }
 
-/* Botão/link dentro do card */
-.container .box .content a {
-  display: inline-block;
-  font-size: 1.1em;
-  color: #111;
-  background: #fff;
-  padding: 10px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: 700;
-  margin-top: 5px;
+.nexus2:hover {
+  border: 2px solid #5100ff;
+  box-shadow: 0 0 15px #5100ff;
 }
-
-/* Efeito de hover no botão */
-.container .box .content a:hover {
-  background: #ffcf4d;
-  border: 1px solid rgba(255, 0, 88, 0.4);
-  box-shadow: 0 1px 15px rgba(1, 1, 1, 0.2);
-}
+ */
