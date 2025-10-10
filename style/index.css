@@ -64,7 +64,7 @@ header {
 /* Efeito de hover no logo */
 #logo img:hover {
     transform: scale(1.1);                   /* Aumenta levemente */
-    transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out; 
     cursor: pointer;
 }
 
@@ -156,7 +156,7 @@ nav ul li span:nth-child(4) {
   flex-wrap: wrap;                /* Faz os cards quebrarem linha se faltar espaço */
   padding: 40px 0;                /* Espaçamento interno superior e inferior */
   margin-top: 15%;              /* Margem acima do bloco de cards */
-  margin-left: -20%;   
+  margin-left: -0%;   
         /* Margem à direita para ajustar o posicionamento */
 }
 
@@ -350,12 +350,12 @@ nav ul li span:nth-child(4) {
   line-height: 1.4em;              /* Espaçamento entre linhas */
 }
 .nexus2{
-   display: block;
+   display: flex;
     width: 20%;
     height: 20%;
     margin: 38%;
-
     margin-top: -72%;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -366,7 +366,7 @@ nav ul li span:nth-child(4) {
   box-shadow: 0 0 15px #ff00bb; brilho em volta
 } */
 
-/* .nexus2{
+/* {
   border: 2px solid transparent;
   border-radius: 10px;
   transition: 0.3s ease;
